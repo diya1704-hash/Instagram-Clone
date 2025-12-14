@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Clone</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="nav-bar">
+        <span class="logo">Instagram</span>
+        <div class="nav-links">
+            <a href="/upload_profile">Profile</a>
+            <a href="/create">Post</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- FEED -->
+    <div class="feed-container">
+        {% for post in posts %}
+        <div class="post-card">
+
+            <div class="post-header">
+                <img src="{{ post.profile_pic or '/static/profile.png' }}" class="profile-pic">
+                <span class="username">{{ post.username }}</span>
+            </div>
+
+            <img src="{{ post.image_url }}" class="post-image">
+
+            <div class="post-content">
+                <strong>{{ post.username }}</strong> {{ post.caption }}
+            </div>
+
+            <div class="comments-section">
+                {% for comment in post.comments %}
+                <p><strong>{{ comment.username }}</strong> {{ comment.text }}</p>
+                {% endfor %}
+            </div>
+
+            <form method="POST" action="/comment/{{ post.id }}" class="comment-form">
+                <input name="comment" placeholder="Add a comment..." required>
+                <button type="submit">Post</button>
+            </form>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

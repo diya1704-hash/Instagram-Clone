@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-box">
+        <h2>Create Post</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image_file" accept="image/*" required>
+            <input name="caption" placeholder="Caption" required>
+            <button type="submit">Share</button>
+        </form>
+
+        <a href="/feed" class="back-link">Back to Feed</a>
+    </div>
+
+</body>
+
+</html>
